@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaiqiangh.github.io</id>
     <title>Welcome</title>
-    <updated>2019-10-28T11:17:09.620Z</updated>
+    <updated>2019-10-28T11:18:27.189Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaiqiangh.github.io"/>
     <link rel="self" href="https://kaiqiangh.github.io/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2</id>
         <link href="https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2">
         </link>
-        <updated>2019-10-26T18:45:30.000Z</updated>
+        <updated>2019-10-26T11:45:30.000Z</updated>
         <content type="html"><![CDATA[<p>Credit: <a href="http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2">http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2</a></p>
 <h2 id="overview">OVERVIEW</h2>
 <p>Action recognition is an exciting research area. A state-of-the-art software package called STIP is available for computing Spatio-Temporal Interest Points (STIPs) as well as the corresponding HOG/HOF features. This functionality lies at the core of many action recognition algorithms.  Many thanks to Ivan Laptev's research group for making this software available.</p>
@@ -101,7 +101,7 @@ export LD_LIBRARY_PATH=&lt;PATH/TO/OPENCV/lib&gt;
 </code></pre>
 <p>If you actually get a help message and not some kind of error, you're home free.</p>
 <p><strong>RESOURCES</strong></p>
-<p>I found this discussion at Stack Overflow especially helpful: http://stackoverflow.com/questions/5212728/libcxcore-so-2-missing-in-opencv</p>
+<p>I found this discussion at Stack Overflow especially helpful: <a href="http://stackoverflow.com/questions/5212728/libcxcore-so-2-missing-in-opencv">http://stackoverflow.com/questions/5212728/libcxcore-so-2-missing-in-opencv</a></p>
 ]]></content>
     </entry>
 </feed>
