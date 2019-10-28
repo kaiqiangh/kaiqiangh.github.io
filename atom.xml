@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaiqiangh.github.io</id>
     <title>Welcome</title>
-    <updated>2019-10-28T13:06:03.532Z</updated>
+    <updated>2019-10-28T13:07:42.345Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaiqiangh.github.io"/>
     <link rel="self" href="https://kaiqiangh.github.io/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2</id>
         <link href="https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2">
         </link>
-        <updated>2019-10-26T04:45:30.000Z</updated>
+        <updated>2019-10-25T21:45:30.000Z</updated>
         <content type="html"><![CDATA[<p>Credit: <a href="http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2">http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2</a></p>
 <h2 id="overview">OVERVIEW</h2>
 <p>Action recognition is an exciting research area. A software package called STIP is available for computing Spatio-Temporal Interest Points (STIPs) as well as the corresponding HOG/HOF features. This functionality lies at the core of many action recognition algorithms.  Many thanks to <a href="https://www.di.ens.fr/~laptev/">Ivan Laptev's research group</a> for making this software available.</p>
