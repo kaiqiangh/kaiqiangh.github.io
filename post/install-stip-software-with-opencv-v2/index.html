@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Install STIP Software With OpenCV v2 | 学习笔记</title>
 <meta name="description" content="温故而知新" />
-<link rel="shortcut icon" href="https://kaiqiangh.github.io/favicon.ico?v=1572260446353">
+<link rel="shortcut icon" href="https://kaiqiangh.github.io/favicon.ico?v=1572260693562">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://kaiqiangh.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://kaiqiangh.github.io">
-  <img class="avatar" src="https://kaiqiangh.github.io/images/avatar.png?v=1572260446353" alt="">
+  <img class="avatar" src="https://kaiqiangh.github.io/images/avatar.png?v=1572260693562" alt="">
   </a>
   <h1 class="site-title">
     学习笔记
@@ -92,16 +92,16 @@
             <div class="post-content-wrapper">
               <div class="post-content">
                 <p>Credit: <a href="http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2">http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2</a></p>
-<p><strong>OVERVIEW</strong></p>
+<h2 id="overview">OVERVIEW</h2>
 <p>Action recognition is an exciting research area. A state-of-the-art software package called STIP is available for computing Spatio-Temporal Interest Points (STIPs) as well as the corresponding HOG/HOF features. This functionality lies at the core of many action recognition algorithms.  Many thanks to Ivan Laptev's research group for making this software available.</p>
 <p>In this post, I detail how to install this package and it's dependencies.  This is a little complicated, because STIP depends crucially on OpenCV for computing optical flow and visualizing results.  However, the install process for OpenCV is a bit delicate, and getting STIP's Linux binaries to find the shared libraries created by OpenCV is a bit of a hassle.  This is especially true for newer versions of OpenCV (current as of this post is 2.3), since STIP seems to have been built with OpenCV 2.0 or earlier. So hopefully other research students can learn from my experience and be more productive.</p>
-<p><strong>STIP TECHNICAL DETAILS</strong></p>
+<h2 id="stip-technical-details">STIP TECHNICAL DETAILS</h2>
 <p>STIP software is available at <a href="http://www.irisa.fr/vista/Equipe/People/Laptev/download.html#stip">http://www.irisa.fr/vista/Equipe/People/Laptev/download.html#stip</a></p>
 <p>Everything in this post is specific to version 2.0, which has many important upgrades.  Most notably, it allows dense and sparse features and user-defined keypoint locations.</p>
 <p>Version 2.0 does not offer <em>any</em> source code, only compiled binaries specifically for 64-bit Linux.   So everything done here must be done on a 64-bit Linux machine.  I'm a little bummed that the original source code isn't available, but not much can be done about that.</p>
 <p>STIP comes with a README file that is reasonable quality and should give all instructions necessary to run the code and compute features.</p>
-<p><strong>OPENCV TECHNICAL DETAILS</strong><br>
-Here, I've based these instructions off of my use of OpenCV version 2.3 for Linux (which is the same source for both 32 and 64 bit).  I'm pretty confident these instructions will translate for later versions, as well as maybe 2.2 and 2.1.</p>
+<h2 id="opencv-technical-details">OPENCV TECHNICAL DETAILS</h2>
+<p>Here, I've based these instructions off of my use of OpenCV version 2.3 for Linux (which is the same source for both 32 and 64 bit).  I'm pretty confident these instructions will translate for later versions, as well as maybe 2.2 and 2.1.</p>
 <p>When installing OpenCV, you have many options for compiling with various features enabled. These are all handled via the CMake utility, but the available options are difficult to understand at first glance.  To get a handle, I ran the command</p>
 <pre><code>cmake -i  &lt;location of downloaded source&gt;
 </code></pre>
@@ -183,6 +183,9 @@ export LD_LIBRARY_PATH=&lt;PATH/TO/OPENCV/lib&gt;
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
+<li><a href="#overview">OVERVIEW</a></li>
+<li><a href="#stip-technical-details">STIP TECHNICAL DETAILS</a></li>
+<li><a href="#opencv-technical-details">OPENCV TECHNICAL DETAILS</a></li>
 <li><a href="#making-stip-and-opencv-play-nice-together">MAKING STIP AND OpenCV PLAY NICE TOGETHER</a></li>
 </ul>
 </li>
