@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://kaiqiangh.github.io/favicon.ico?v=1572261851021">
+<link rel="shortcut icon" href="https://kaiqiangh.github.io/favicon.ico?v=1572267815943">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://kaiqiangh.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://kaiqiangh.github.io">
-        <img src="https://kaiqiangh.github.io/images/avatar.png?v=1572261851021" class="site-logo">
+        <img src="https://kaiqiangh.github.io/images/avatar.png?v=1572267815943" class="site-logo">
         <h1 class="site-title">Welcome</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -102,7 +102,7 @@
             <div class="post-content">
               <p>Credit: <a href="http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2">http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2</a></p>
 <h2 id="overview">OVERVIEW</h2>
-<p>Action recognition is an exciting research area. A state-of-the-art software package called STIP is available for computing Spatio-Temporal Interest Points (STIPs) as well as the corresponding HOG/HOF features. This functionality lies at the core of many action recognition algorithms.  Many thanks to Ivan Laptev's research group for making this software available.</p>
+<p>Action recognition is an exciting research area. A software package called STIP is available for computing Spatio-Temporal Interest Points (STIPs) as well as the corresponding HOG/HOF features. This functionality lies at the core of many action recognition algorithms.  Many thanks to <a href="https://www.di.ens.fr/~laptev/">Ivan Laptev's research group</a> for making this software available.</p>
 <p>In this post, I detail how to install this package and it's dependencies.  This is a little complicated, because STIP depends crucially on OpenCV for computing optical flow and visualizing results.  However, the install process for OpenCV is a bit delicate, and getting STIP's Linux binaries to find the shared libraries created by OpenCV is a bit of a hassle.  This is especially true for newer versions of OpenCV (current as of this post is 2.3), since STIP seems to have been built with OpenCV 2.0 or earlier. So hopefully other research students can learn from my experience and be more productive.</p>
 <h2 id="stip-technical-details">STIP TECHNICAL DETAILS</h2>
 <p>STIP software is available at <a href="http://www.irisa.fr/vista/Equipe/People/Laptev/download.html#stip">http://www.irisa.fr/vista/Equipe/People/Laptev/download.html#stip</a></p>
@@ -115,12 +115,12 @@
 <pre><code>cmake -i  &lt;location of downloaded source&gt;
 </code></pre>
 <p>which allows you to walk step-by-step through each option, and keep defaults unless you specifically say otherwise.</p>
-<p>For the video applications of interest here, it is essential that we compile with FFMPEG support on.  Some other handy options I discovered were:<br>
-Defining my own custom installation directory<br>
-This allows you to run everything without root privileges, which is nice.<br>
-CMAKE_INSTALL_PREFIX  is the relevant option here<br>
+<p>For the video applications of interest here, it is essential that we compile with FFMPEG support on. Some other handy options I discovered were:<br>
+Defining my own custom installation directory.<br>
+1. This allows you to run everything without root privileges, which is nice.<br>
+2. CMAKE_INSTALL_PREFIX  is the relevant option here<br>
 Python Support (so you can call OpenCV functions from Python)<br>
-BUILD_NEW_PYTHON_SUPPORT<br>
+1.  BUILD_NEW_PYTHON_SUPPORT<br>
 Some default advanced features I decided I could live without were CUDA support (to use GPUs to speed up computation), Eigen (which seems to be some matrix math library), and OpenEXR (which is for high-dynamic range cameras.</p>
 <p>All told, you can compile under my exact configuration using the following shell script.</p>
 <pre><code>cmake -D  CMAKE_BUILD_TYPE=RELEASE \
@@ -134,7 +134,7 @@ Some default advanced features I decided I could live without were CUDA support 
       -D  INSTALL_PYTHON_EXAMPLES=ON \
       /home/mhughes/code/OpenCV-2.3.0/src/
 </code></pre>
-<p>After that runs, just typing make install should install the entire OpenCV library.  In my experience, the installation process takes about 10 minutes or so.</p>
+<p>After that runs, just typing &quot;make install&quot; should install the entire OpenCV library.  In my experience, the installation process takes about 10 minutes or so.</p>
 <h2 id="making-stip-and-opencv-play-nice-together">MAKING STIP AND OpenCV PLAY NICE TOGETHER</h2>
 <p>Because STIP is built with precompiled binaries, it is not able to find OpenCV's shared libraries out of the box, and will instead throw errors. I found that I could fix this in two steps.</p>
 <p><strong>Create symbolic links from the library files STIP expects to actual OpenCV shared librarie</strong></p>
@@ -167,7 +167,7 @@ ln -s  libopencv_highgui.so libhighgui.so.2
 ln -s  libopencv_ml.so libml.so.2
 ln -s libopencv_video.so  libcvaux.so.2
 </code></pre>
-<p>Remember that these don't necessarily mean that each library on the right entirely captures the library on the left.  Instead, it means that somewhere in the collection of all libraries on the right, we can search and find each function that is supposed to come from the original shared library in STIP.    In fact, it seems that others have solved this problem by linking to &quot;libopencv_contrib&quot; instead of &quot;libopencv_imgproc&quot;, so there may be many other valid configurations.  However, the &quot;core&quot;, &quot;ml&quot;, &quot;high_gui&quot;, and &quot;video&quot; libraries seem to be essential.</p>
+<p>Remember that these don't necessarily mean that each library on the right entirely captures the library on the left.  Instead, it means that somewhere in the collection of all libraries on the right, we can search and find each function that is supposed to come from the original shared library in STIP.    In fact, it seems that <a href="https://stackoverflow.com/questions/5212728/libcxcore-so-2-missing-in-opencv">others have solved this problem</a> by linking to &quot;libopencv_contrib&quot; instead of &quot;libopencv_imgproc&quot;, so there may be many other valid configurations.  However, the &quot;core&quot;, &quot;ml&quot;, &quot;high_gui&quot;, and &quot;video&quot; libraries seem to be essential.</p>
 <p>Note: for compatibility, I link to the shared libraries whose names are &quot;unversioned&quot;.  For example, if you look inside the lib subdirectory of your install, you'll find the following file structure for each library type (e.g. &quot;ml&quot;, &quot;video&quot;, &quot;highgui&quot;, ... )</p>
 <pre><code>1. libopencv_video.so@       ( unversioned name ... just a symbolic link )
 2. libopencv_video.so.2.3@  ( also a symbolic link )
