@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaiqiangh.github.io</id>
     <title>Welcome</title>
-    <updated>2019-10-28T13:14:42.152Z</updated>
+    <updated>2019-10-29T10:35:02.383Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaiqiangh.github.io"/>
     <link rel="self" href="https://kaiqiangh.github.io/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2</id>
         <link href="https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2">
         </link>
-        <updated>2019-10-25T21:45:30.000Z</updated>
+        <updated>2019-10-25T14:45:30.000Z</updated>
         <content type="html"><![CDATA[<p>Credit: <a href="http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2">http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2</a></p>
 <h2 id="overview">OVERVIEW</h2>
 <p>Action recognition is an exciting research area. A software package called STIP is available for computing Spatio-Temporal Interest Points (STIPs) as well as the corresponding HOG/HOF features. This functionality lies at the core of many action recognition algorithms.  Many thanks to <a href="https://www.di.ens.fr/~laptev/">Ivan Laptev's research group</a> for making this software available.</p>
@@ -31,13 +31,21 @@
 <pre><code>cmake -i  &lt;location of downloaded source&gt;
 </code></pre>
 <p>which allows you to walk step-by-step through each option, and keep defaults unless you specifically say otherwise.</p>
-<p>For the video applications of interest here, it is essential that we compile with FFMPEG support on. Some other handy options I discovered were:<br>
-Defining my own custom installation directory.<br>
-1. This allows you to run everything without root privileges, which is nice.<br>
-2. CMAKE_INSTALL_PREFIX  is the relevant option here<br>
-Python Support (so you can call OpenCV functions from Python)<br>
-1.  BUILD_NEW_PYTHON_SUPPORT<br>
-Some default advanced features I decided I could live without were CUDA support (to use GPUs to speed up computation), Eigen (which seems to be some matrix math library), and OpenEXR (which is for high-dynamic range cameras.</p>
+<p>For the video applications of interest here, it is essential that we compile with FFMPEG support on. Some other handy options I discovered were:</p>
+<ul>
+<li><strong>Defining my own custom installation directory</strong>
+<ul>
+<li>This allows you to run everything without root privileges, which is nice.</li>
+<li>CMAKE_INSTALL_PREFIX  is the relevant option here</li>
+</ul>
+</li>
+<li><strong>Python Support (so you can call OpenCV functions from Python)</strong>
+<ul>
+<li>BUILD_NEW_PYTHON_SUPPORT</li>
+</ul>
+</li>
+</ul>
+<p>Some default advanced features I decided I could live without were CUDA support (to use GPUs to speed up computation), Eigen (which seems to be some matrix math library), and OpenEXR (which is for high-dynamic range cameras.</p>
 <p>All told, you can compile under my exact configuration using the following shell script.</p>
 <pre><code>cmake -D  CMAKE_BUILD_TYPE=RELEASE \
       -D  CMAKE_INSTALL_PREFIX=/home/mhughes/code/opencv64/ \
@@ -55,26 +63,26 @@ Some default advanced features I decided I could live without were CUDA support 
 <p>Because STIP is built with precompiled binaries, it is not able to find OpenCV's shared libraries out of the box, and will instead throw errors. I found that I could fix this in two steps.</p>
 <p><strong>Create symbolic links from the library files STIP expects to actual OpenCV shared librarie</strong></p>
 <p>STIP 2.0 expects the following files to be available. Remember that &quot;.so&quot; is a shared libary file extension.<br>
-1. libcxcore.so.2<br>
-2. libcv.so.2<br>
-3. libhighgui.so.2<br>
-4. libcvaux.so.2<br>
-5. libml.so.2</p>
+libcxcore.so.2<br>
+libcv.so.2<br>
+libhighgui.so.2<br>
+libcvaux.so.2<br>
+libml.so.2</p>
 <p>However, OpenCV seems to have changed the shared libary naming convention since STIP was compiled.  There is no longer a one-to-one correspondence between the above names and the current names, which include the following:</p>
-<pre><code>1. libopencv_core.so
-2. libopencv_video.so
-3. libopencv_highgui.so
-4. libopencv_ml.so
-5. libopencv_imgproc.so
-6. ... (and a few more)
+<pre><code>  libopencv_core.so
+  libopencv_video.so
+  libopencv_highgui.so
+  libopencv_ml.so
+  libopencv_imgproc.so
+  ... (and a few more)
 </code></pre>
 <p>I'm not totally sure how these two library structures are related, but I found a workaround that makes everything work just fine on my setup.  Essentially, I figured that related name fragments (highgui, ml, core) were important indicators of correspondence, and that the video library would also be important (it seems to be how STIP computes optical flow and maybe some other features).</p>
 <p>Within the OpenCV install directory's shared libary directory, I build the following links:<br>
-1. libcxcore.so.2   ---&gt;  libopencv_core.so<br>
-2. libcv.so.2         ---&gt; libopencv_imgproc.so<br>
-3. libhighgui.so.2  ---&gt; libopencv_highgui.so<br>
-4. libml.so.2        ---&gt;  libopencv_ml.so<br>
-5. libcvaux.so.2    ---&gt;  libopencv_video.so<br>
+libcxcore.so.2   ---&gt;  libopencv_core.so<br>
+libcv.so.2         ---&gt; libopencv_imgproc.so<br>
+libhighgui.so.2  ---&gt; libopencv_highgui.so<br>
+libml.so.2        ---&gt;  libopencv_ml.so<br>
+libcvaux.so.2    ---&gt;  libopencv_video.so<br>
 via the commands:</p>
 <pre><code>cd &lt;/PATH/TO/OPENCV/lib&gt;
 ln -s  libopencv_core.so  libcxcore.so.2
@@ -85,9 +93,9 @@ ln -s libopencv_video.so  libcvaux.so.2
 </code></pre>
 <p>Remember that these don't necessarily mean that each library on the right entirely captures the library on the left.  Instead, it means that somewhere in the collection of all libraries on the right, we can search and find each function that is supposed to come from the original shared library in STIP.    In fact, it seems that <a href="https://stackoverflow.com/questions/5212728/libcxcore-so-2-missing-in-opencv">others have solved this problem</a> by linking to &quot;libopencv_contrib&quot; instead of &quot;libopencv_imgproc&quot;, so there may be many other valid configurations.  However, the &quot;core&quot;, &quot;ml&quot;, &quot;high_gui&quot;, and &quot;video&quot; libraries seem to be essential.</p>
 <p>Note: for compatibility, I link to the shared libraries whose names are &quot;unversioned&quot;.  For example, if you look inside the lib subdirectory of your install, you'll find the following file structure for each library type (e.g. &quot;ml&quot;, &quot;video&quot;, &quot;highgui&quot;, ... )</p>
-<pre><code>1. libopencv_video.so@       ( unversioned name ... just a symbolic link )
-2. libopencv_video.so.2.3@  ( also a symbolic link )
-3. libopencv_video.so.2.3.0  (actual library file both of the above links point to)
+<pre><code>  libopencv_video.so@       ( unversioned name ... just a symbolic link )
+  libopencv_video.so.2.3@  ( also a symbolic link )
+  libopencv_video.so.2.3.0  (actual library file both of the above links point to)
 </code></pre>
 <p>I chose to link to the <em>unversioned</em> names so this advice will work in future releases of OpenCV as long as (1) naming conventions are kept  and (2) OpenCV continues to install shared libraries along with symbolic links with &quot;unversioned&quot; names.</p>
 <p><strong>Adjust the terminal's library path to include the OpenCV install directory</strong></p>
