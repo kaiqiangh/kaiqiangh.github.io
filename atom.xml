@@ -2,18 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaiqiangh.github.io</id>
     <title>Welcome</title>
-    <updated>2019-10-29T10:37:23.625Z</updated>
+    <updated>2020-10-15T13:37:59.573Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaiqiangh.github.io"/>
     <link rel="self" href="https://kaiqiangh.github.io/atom.xml"/>
     <subtitle>Deep Learning, Transfer Learning, Computer Vision, Video Intelligence</subtitle>
     <logo>https://kaiqiangh.github.io/images/avatar.png</logo>
     <icon>https://kaiqiangh.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, Welcome</rights>
+    <rights>All rights reserved 2020, Welcome</rights>
     <entry>
         <title type="html"><![CDATA[Install STIP Software With OpenCV v2]]></title>
-        <id>https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2</id>
-        <link href="https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2">
+        <id>https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2/</id>
+        <link href="https://kaiqiangh.github.io/post/install-stip-software-with-opencv-v2/">
         </link>
         <updated>2019-10-25T14:45:30.000Z</updated>
         <content type="html"><![CDATA[<p>Credit: <a href="http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2">http://web.michaelchughes.com/how-to/install-stip-software-with-opencv-v2</a></p>
